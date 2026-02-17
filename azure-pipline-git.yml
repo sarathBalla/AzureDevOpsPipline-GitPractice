@@ -27,5 +27,5 @@ steps:
   displayName: 'Install Playwright system dependencies'
 
 - script: npx playwright test
-  displayName: 'Start Execution'
+  displayName: 'Start Execution From GitRepo'
 
