@@ -29,3 +29,10 @@ steps:
 - script: npx playwright test
   displayName: 'Start Execution From GitRepo'
 
+# Publish the Playwright HTML report as a pipeline artifact
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'playwright-report'
+    artifact: 'Playwright HTML Report'
+    publishLocation: 'pipeline'
+  condition: always() # This will ensure that the report is published even if the tests fail
