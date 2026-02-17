@@ -8,7 +8,7 @@
 # when any pull happens in main automatically Job will execute
 
 schedules:
-- cron: "40 2 * * *"  #run time at daily 2:40 AM
+- cron: "25 21 * * *"  #run time at daily 2:40 AM
   displayName: "Daily 2:40 AM Pipline Trigger"
   branches:
     include:
