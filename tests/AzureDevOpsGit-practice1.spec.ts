@@ -16,7 +16,7 @@ test('Practice Test 2', async ({ page }) => {
     console.log("Practice Test 2 executed successfully");
 });
 
-test('Practice Test 3', async ({ page }) => {
+test('Practice Test 3 @Dev', async ({ page }) => {
     await page.goto('https://www.saucedemo.com/');
     const title = await page.title();
     await expect(page).toHaveTitle(title);
