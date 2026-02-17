@@ -10,8 +10,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest #windows-latest
 
-steps:
-- task: NodeTool@0
+steps:- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/PlaywrightJunitReport.xml'
+    testRunTitle: 'Junit Reporter'- task: NodeTool@0
   inputs:
     versionSource: 'spec'
     versionSpec: '25.x'
@@ -29,10 +32,17 @@ steps:
 - script: npx playwright test
   displayName: 'Start Execution From GitRepo'
 
-# Publish the Playwright HTML report as a pipeline artifact
+# Publish the Playwright HTML report as a Publish Pipeline Artifacts
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'playwright-report'
     artifact: 'Playwright HTML Report'
     publishLocation: 'pipeline'
   condition: always() # This will ensure that the report is published even if the tests fail
+
+# Publish the Playwright Junit report as a Publish Test Results
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/PlaywrightJunitReport.xml'
+    testRunTitle: 'Junit Reporter'
