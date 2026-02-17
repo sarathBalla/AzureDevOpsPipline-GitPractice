@@ -26,7 +26,7 @@ steps:
 - script: npx playwright install-deps chromium
   displayName: 'Install Playwright system dependencies'
 
-- script: npx playwright test
+- script: npx playwright test --project=$(browser) --grep=$(tagName)  #using the browser variable defined in pipeline variables at a Run time and pass specific tag in title
   displayName: 'Start Execution From GitRepo'
 
 # Publish the Playwright HTML report as a Publish Pipeline Artifacts
